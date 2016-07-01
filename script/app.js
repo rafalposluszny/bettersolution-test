@@ -7,33 +7,27 @@
     app.directive('showUserList', showUserListDir);
     app.directive('showUser', showUserDir);
     app.directive('showErrorPopover', showErrorPopoverDir);
-    app.filter('id', byUserIdFilter);
+    app.filter('byUserId', byUserIdFilter);
 
     function BaseControllerCtrl($scope, $http) {
         $scope.posts = [];
         $scope.userCardShow = userCardShow;
 
-        $http({
-            method: 'GET',
-            url: 'http://jsonplaceholder.typicode.com/users'
-
-            }).then(function successCallback(response) {
+        $http.get('http://jsonplaceholder.typicode.com/users')
+            .then(function successCallback(response) {
                 $scope.people = response.data;
 
-        }, function errorCallback(response) {
-                errorPopOver(response)
-        });
+            }, function errorCallback(response) {
+                    errorPopOver(response)
+            });
 
-        $http({
-            method: 'GET',
-                url: 'http://jsonplaceholder.typicode.com/posts'
-
-            }).then(function successCallback(response) {
+        $http.get('http://jsonplaceholder.typicode.com/posts')
+            .then(function successCallback(response) {
                 $scope.posts = response.data;
 
             }, function errorCallback(response) {
                     errorPopOver(response)
-        });
+            });
 
         function errorPopOver(response) {
             $scope.status = response.status;
@@ -71,9 +65,9 @@
     }
 
     function byUserIdFilter() {
-        return function (items, userCardId) {
+        return function (items, userCardId, attribute) {
             return items.filter(function (item) {
-                return item.userId == userCardId;
+                return item[attribute] == userCardId;
             });
         };
     }

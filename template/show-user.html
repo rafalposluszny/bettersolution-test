@@ -1,6 +1,6 @@
 <div ng-show="userCard">
     <div class="panel panel-primary">
-        <div class="panel-heading">User information</div>
+        <div class="panel-heading"><strong>User information</strong></div>
 
         <div class="panel-body">
 
@@ -23,10 +23,10 @@
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading">User posts</div>
+        <div class="panel-heading"><strong>User posts</strong></div>
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="post in posts | id: userCard.id">
-                    <h4><small><strong>{{post.title}}</strong></small></h4>
+                <li class="list-group-item" ng-repeat="post in posts | byUserId: userCard.id:'userId'">
+                    <h4><small>{{post.id}}<strong> {{post.title}}</strong></small></h4>
                     {{post.body}}
                 </li>
             </ul>
