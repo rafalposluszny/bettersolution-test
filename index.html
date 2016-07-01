@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Userlist">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User list</title>
+
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
+</head>
+
+<body ng-controller="BaseController">
+
+    <header>
+        <div class="page-header text-center text-uppercase">
+            <h1>User list <small class="text-capitalize">test task - Rafał Posłuszny</small></h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-6 col-sm-4">
+                    <show-user-list></show-user-list>
+                </div>
+                <div class="col-xs-6 col-xs-8">
+                    <show-user></show-user>
+                </div>
+
+            </div>
+        </div>
+
+        <show-error-popover></show-error-popover>
+    </main>
+
+    <script type="text/javascript" src="script/angular.min.js"></script>
+    <script type="text/javascript" src="script/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="script/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script/app.js"></script>
+</body>
+
+</html>
